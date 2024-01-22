@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -79,5 +80,75 @@ class SortController extends GetxController {
       textEditingController.text =
           DateFormat('dd-MM-yyyy').format(selectedDate.value).toString();
     }
+  }
+
+  //Charts
+
+  RxInt touchedIndex = (-1).obs;
+  RxBool isTouched=false.obs;
+
+  List<PieChartSectionData> showingSections() {
+    return List.generate(4, (i) {
+       isTouched.value = i == touchedIndex.value;
+      final fontSize = isTouched.value ? 25.0 : 16.0;
+      final radius = isTouched.value ? 60.0 : 50.0;
+      const shadows = [Shadow(color:Colors.white, blurRadius: 2)];
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            color: Colors.blue,
+            value: 40,
+            title: '40',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color:Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 1:
+          return PieChartSectionData(
+            color: Colors.yellow,
+            value: 30,
+            title: '30',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color:Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 2:
+          return PieChartSectionData(
+            color: Colors.purple,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color:Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 3:
+          return PieChartSectionData(
+            color: Colors.green,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color:Colors.white,
+              shadows: shadows,
+            ),
+          );
+        default:
+          throw Error();
+      }
+    });
   }
 }
