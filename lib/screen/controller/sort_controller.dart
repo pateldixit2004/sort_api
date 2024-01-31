@@ -2,11 +2,23 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:sort_api/screen/model/extra_model.dart';
 import 'package:sort_api/screen/model/sort_model.dart';
 import 'package:sort_api/utils/api_helper.dart';
 
 class SortController extends GetxController {
+  RxList<ExtraModel> modelList=<ExtraModel>[
+    ExtraModel(amount: 0,baseAmount: '100'),
+    ExtraModel(amount: 0,baseAmount: '200'),
+    ExtraModel(amount: 0,baseAmount: '500'),
+  ].obs;
+
+  RxList<TextEditingController> con=<TextEditingController>[].obs;
+  RxInt resuly=0.obs;
+
+
   RxList<SortModel> sortList = <SortModel>[].obs;
+  RxList<RxInt> resultList = <RxInt>[].obs;
 
   Rx<SortModel> model = SortModel().obs;
 
