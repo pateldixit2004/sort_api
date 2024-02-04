@@ -16,8 +16,11 @@ class _TabScreenState extends State<TabScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Hello world Dixit"),
-          bottom: const TabBar(
-              padding: EdgeInsets.all(0),
+          bottom: const PreferredSize(
+            preferredSize: Size(double.infinity, 0),
+            child: TabBar(
+              labelPadding: EdgeInsets.only(right: 10),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               isScrollable: true,
               tabs: [
                 Tab(
@@ -29,10 +32,17 @@ class _TabScreenState extends State<TabScreen> {
                 Tab(
                   child: Text("Third Screen is THis"),
                 ),
-              ]),
+              ],
+            ),
+          ),
         ),
         body: const TabBarView(
-            children: [Text("First"), Text("Second"), Text("Third")]),
+          children: [
+            Text("First"),
+            Text("Second"),
+            Text("Third"),
+          ],
+        ),
       ),
     ));
   }
